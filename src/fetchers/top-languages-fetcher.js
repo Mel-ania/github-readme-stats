@@ -41,7 +41,7 @@ async function fetchTopLanguages(username, ownerAffiliations, exclude_repo = [])
   // parseArray() will always return an empty array even nothing was specified
   // and GraphQL would consider that empty arr as a valid value. Nothing will be
   // queried in that case as no affiliation is presented.
-  ownerAffiliations = ownerAffiliations.length > 0 ? ownerAffiliations : ["OWNER"];
+  ownerAffiliations = ["OWNER","ORGANIZATION_MEMBER","COLLABORATOR"];
   const res = await retryer(fetcher, { login: username, ownerAffiliations });
 
   if (res.data.errors) {
